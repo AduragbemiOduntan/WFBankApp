@@ -9,10 +9,9 @@ namespace WFBankApp.Core.Abstraction
 {
     public interface IAccountService
     {
-/*        Task<IEnumerable<Account>> GetAllAccountAsync();
-        Task<Account> GetAccountAsync(string phoneNumber);
-        Task<Account> CreateAccountAsync(Account account);
-        Task UpdateCustomerAsync(string phoneNumber, CustomerForUpdateDto customerForUpdateDto, bool trackChanges);
-        Task DeleteCustomerAsync(string phoneNumber, bool trackChanges);*/
+        Task<IEnumerable<Account>> GetAllAccountsByType();
+        Task<IEnumerable<Account>> GetAllAccounts(int id);
+        /*  Task<IEnumerable<Account>> GetAccountsByBalance();*/
+        Task<IEnumerable<Account>> GetAllAccount();
     }
 }

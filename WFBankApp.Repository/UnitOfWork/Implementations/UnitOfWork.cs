@@ -22,9 +22,9 @@ namespace WFBankApp.Repository.UnitOfWork.Implementations
             _dbContext = dbContext;
         }
 
-        public IUserRepository User => _userRepository ??= new UserRepository(_dbContext);
-        public IAccountRepository Account => _accountRepository ??= new AccountRepository(_dbContext);
-        public IBankTransactionRepository BankTransaction => _bankTransactionRepository ??= new BankTransactionRepository(_dbContext);
+        public IUserRepository UserRepository => _userRepository ??= new UserRepository(_dbContext);
+        public IAccountRepository AccountRepository => _accountRepository ??= new AccountRepository(_dbContext);
+        public IBankTransactionRepository BankTransactionRepository => _bankTransactionRepository ??= new BankTransactionRepository(_dbContext);
 
         public async Task SaveAsync()
         {

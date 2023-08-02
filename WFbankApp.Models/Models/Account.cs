@@ -13,7 +13,6 @@ namespace WFbankApp.Models.Models
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string UserEmail { get; set; }
         public string PhoneNumber { get; set; }
         public AccountType AccountType { get; set; }
         public string AccountNumber { get; set; }

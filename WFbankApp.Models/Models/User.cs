@@ -8,6 +8,7 @@ namespace WFbankApp.Models.Models
 {
     public class User : AuditableBaseEntity
     {
+
         public string Email { get; set; }
         public string Password { get; set; }
 

@@ -12,6 +12,9 @@ namespace WFBankApp.Repository.Repositories.Abstractions
         /*Task<IEnumerable<Account>> GetAcctDeialByAcctNum();*/
         Task<IEnumerable<Account>> GetAllAccounts();
         Task<IEnumerable<Account>> GetAccountsByUserId(int id);
+      /*  Task<IEnumerable<Account>> GetAccountsByBalance();*/
+        Task<IEnumerable<Account>> GetAllAccount();
+
 
     }
 }

@@ -10,9 +10,9 @@ namespace WFBankApp.Repository.UnitOfWork.Abstractions
 {
     public interface IUnitOfWork
     {
-        IUserRepository User { get; }
-        IAccountRepository Account { get; }
-        IBankTransactionRepository BankTransaction { get; }
+        IUserRepository UserRepository { get; }
+        IAccountRepository AccountRepository { get; }
+        IBankTransactionRepository BankTransactionRepository { get; }
         Task SaveAsync();
         void Dispose();
     }

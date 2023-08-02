@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WFBankApp.Repository.Repositories.Implementations
+namespace WFBankApp.Core.Implementation
 {
-    public class AuthenticationRepository
+    public class ServiceManager
     {
+
     }
 }

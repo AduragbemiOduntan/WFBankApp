@@ -1,11 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore.Design;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using WFBankApp.Repository.Data;
 
-namespace WFBankApp.ContextFactory
+namespace WFBankAppPresentation.ContextFactory
 {
-    public class DbContextFactory : IDesignTimeDbContextFactory<BankDbContext>
+    internal class DbContextFactory: IDesignTimeDbContextFactory<BankDbContext>
     {
         public BankDbContext CreateDbContext(string[] args)
         {

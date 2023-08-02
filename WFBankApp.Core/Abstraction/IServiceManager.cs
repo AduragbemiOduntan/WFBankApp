@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WFBankApp.Repository.Repositories.Abstractions
+namespace WFBankApp.Core.Abstraction
 {
-    public interface IAuthenticationRepository
+    public interface IServiceManager
     {
     }
 }
