@@ -38,7 +38,7 @@
             panel4 = new Panel();
             panel5 = new Panel();
             startHereButton = new Button();
-            panel2 = new Panel();
+            registerLoginPanel = new Panel();
             login = new Button();
             Register = new Button();
             label3 = new Label();
@@ -47,8 +47,10 @@
             password = new TextBox();
             email = new TextBox();
             Logo = new Label();
-            panel1 = new Panel();
-            panel3 = new Panel();
+            createAcctPanel = new Panel();
+            transactionPanel = new Panel();
+            transDescText = new TextBox();
+            label9 = new Label();
             acctTypeText = new TextBox();
             submitTransaction = new Button();
             transactionTypeText = new TextBox();
@@ -56,7 +58,7 @@
             label5 = new Label();
             label6 = new Label();
             amountLabel = new Label();
-            label10 = new Label();
+            recAcctNumLabel = new Label();
             recieverAcctNumText = new TextBox();
             label11 = new Label();
             submitAccount = new Button();
@@ -76,9 +78,9 @@
             panel7.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
-            panel2.SuspendLayout();
-            panel1.SuspendLayout();
-            panel3.SuspendLayout();
+            registerLoginPanel.SuspendLayout();
+            createAcctPanel.SuspendLayout();
+            transactionPanel.SuspendLayout();
             SuspendLayout();
             // 
             // sidePanel
@@ -180,21 +182,22 @@
             startHereButton.TabIndex = 0;
             startHereButton.Text = "Start Here";
             startHereButton.UseVisualStyleBackColor = false;
+            startHereButton.Click += startHereButton_Click;
             // 
-            // panel2
+            // registerLoginPanel
             // 
-            panel2.BackColor = SystemColors.AppWorkspace;
-            panel2.Controls.Add(login);
-            panel2.Controls.Add(Register);
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(label2);
-            panel2.Controls.Add(label1);
-            panel2.Controls.Add(password);
-            panel2.Controls.Add(email);
-            panel2.Location = new Point(287, 131);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(356, 273);
-            panel2.TabIndex = 1;
+            registerLoginPanel.BackColor = SystemColors.AppWorkspace;
+            registerLoginPanel.Controls.Add(login);
+            registerLoginPanel.Controls.Add(Register);
+            registerLoginPanel.Controls.Add(label3);
+            registerLoginPanel.Controls.Add(label2);
+            registerLoginPanel.Controls.Add(label1);
+            registerLoginPanel.Controls.Add(password);
+            registerLoginPanel.Controls.Add(email);
+            registerLoginPanel.Location = new Point(287, 131);
+            registerLoginPanel.Name = "registerLoginPanel";
+            registerLoginPanel.Size = new Size(356, 273);
+            registerLoginPanel.TabIndex = 1;
             // 
             // login
             // 
@@ -268,53 +271,70 @@
             Logo.TabIndex = 2;
             Logo.Text = "WF BANK";
             // 
-            // panel1
+            // createAcctPanel
             // 
-            panel1.BackColor = SystemColors.AppWorkspace;
-            panel1.Controls.Add(panel3);
-            panel1.Controls.Add(submitAccount);
-            panel1.Controls.Add(accountTypeText);
-            panel1.Controls.Add(phoneNumberText);
-            panel1.Controls.Add(lastNameText);
-            panel1.Controls.Add(label8);
-            panel1.Controls.Add(label7);
-            panel1.Controls.Add(lastName);
-            panel1.Controls.Add(fn);
-            panel1.Controls.Add(firstNameText);
-            panel1.Controls.Add(label4);
-            panel1.Location = new Point(276, 62);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(402, 376);
-            panel1.TabIndex = 3;
+            createAcctPanel.BackColor = SystemColors.AppWorkspace;
+            createAcctPanel.Controls.Add(submitAccount);
+            createAcctPanel.Controls.Add(accountTypeText);
+            createAcctPanel.Controls.Add(phoneNumberText);
+            createAcctPanel.Controls.Add(lastNameText);
+            createAcctPanel.Controls.Add(label8);
+            createAcctPanel.Controls.Add(label7);
+            createAcctPanel.Controls.Add(lastName);
+            createAcctPanel.Controls.Add(fn);
+            createAcctPanel.Controls.Add(firstNameText);
+            createAcctPanel.Controls.Add(label4);
+            createAcctPanel.Location = new Point(261, 62);
+            createAcctPanel.Name = "createAcctPanel";
+            createAcctPanel.Size = new Size(402, 376);
+            createAcctPanel.TabIndex = 3;
             // 
-            // panel3
+            // transactionPanel
             // 
-            panel3.BackColor = SystemColors.AppWorkspace;
-            panel3.Controls.Add(acctTypeText);
-            panel3.Controls.Add(submitTransaction);
-            panel3.Controls.Add(transactionTypeText);
-            panel3.Controls.Add(amounText);
-            panel3.Controls.Add(label5);
-            panel3.Controls.Add(label6);
-            panel3.Controls.Add(amountLabel);
-            panel3.Controls.Add(label10);
-            panel3.Controls.Add(recieverAcctNumText);
-            panel3.Controls.Add(label11);
-            panel3.Location = new Point(0, 0);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(402, 376);
-            panel3.TabIndex = 10;
+            transactionPanel.BackColor = SystemColors.AppWorkspace;
+            transactionPanel.Controls.Add(transDescText);
+            transactionPanel.Controls.Add(label9);
+            transactionPanel.Controls.Add(acctTypeText);
+            transactionPanel.Controls.Add(submitTransaction);
+            transactionPanel.Controls.Add(transactionTypeText);
+            transactionPanel.Controls.Add(amounText);
+            transactionPanel.Controls.Add(label5);
+            transactionPanel.Controls.Add(label6);
+            transactionPanel.Controls.Add(amountLabel);
+            transactionPanel.Controls.Add(recAcctNumLabel);
+            transactionPanel.Controls.Add(recieverAcctNumText);
+            transactionPanel.Controls.Add(label11);
+            transactionPanel.Location = new Point(261, 62);
+            transactionPanel.Name = "transactionPanel";
+            transactionPanel.Size = new Size(402, 376);
+            transactionPanel.TabIndex = 10;
+            // 
+            // transDescText
+            // 
+            transDescText.Location = new Point(41, 251);
+            transDescText.Name = "transDescText";
+            transDescText.Size = new Size(305, 23);
+            transDescText.TabIndex = 12;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(41, 233);
+            label9.Name = "label9";
+            label9.Size = new Size(130, 15);
+            label9.TabIndex = 11;
+            label9.Text = "Transaction Description";
             // 
             // acctTypeText
             // 
-            acctTypeText.Location = new Point(41, 259);
+            acctTypeText.Location = new Point(40, 197);
             acctTypeText.Name = "acctTypeText";
             acctTypeText.Size = new Size(305, 23);
             acctTypeText.TabIndex = 10;
             // 
             // submitTransaction
             // 
-            submitTransaction.Location = new Point(41, 308);
+            submitTransaction.Location = new Point(40, 337);
             submitTransaction.Name = "submitTransaction";
             submitTransaction.Size = new Size(75, 23);
             submitTransaction.TabIndex = 9;
@@ -338,7 +358,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(41, 241);
+            label5.Location = new Point(40, 179);
             label5.Name = "label5";
             label5.Size = new Size(79, 15);
             label5.TabIndex = 5;
@@ -362,19 +382,19 @@
             amountLabel.TabIndex = 3;
             amountLabel.Text = "Amount";
             // 
-            // label10
+            // recAcctNumLabel
             // 
-            label10.AutoSize = true;
-            label10.Location = new Point(41, 179);
-            label10.Name = "label10";
-            label10.Size = new Size(154, 15);
-            label10.TabIndex = 2;
-            label10.Text = "Reciever's Account Number";
-            label10.Click += label10_Click;
+            recAcctNumLabel.AutoSize = true;
+            recAcctNumLabel.Location = new Point(40, 293);
+            recAcctNumLabel.Name = "recAcctNumLabel";
+            recAcctNumLabel.Size = new Size(154, 15);
+            recAcctNumLabel.TabIndex = 2;
+            recAcctNumLabel.Text = "Reciever's Account Number";
+            recAcctNumLabel.Click += label10_Click;
             // 
             // recieverAcctNumText
             // 
-            recieverAcctNumText.Location = new Point(43, 197);
+            recieverAcctNumText.Location = new Point(42, 311);
             recieverAcctNumText.Name = "recieverAcctNumText";
             recieverAcctNumText.Size = new Size(305, 23);
             recieverAcctNumText.TabIndex = 1;
@@ -478,9 +498,10 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(panel1);
+            Controls.Add(transactionPanel);
+            Controls.Add(createAcctPanel);
             Controls.Add(Logo);
-            Controls.Add(panel2);
+            Controls.Add(registerLoginPanel);
             Controls.Add(sidePanel);
             Name = "Form1";
             Text = "Form1";
@@ -492,12 +513,12 @@
             panel7.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
+            registerLoginPanel.ResumeLayout(false);
+            registerLoginPanel.PerformLayout();
+            createAcctPanel.ResumeLayout(false);
+            createAcctPanel.PerformLayout();
+            transactionPanel.ResumeLayout(false);
+            transactionPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -505,7 +526,7 @@
         #endregion
 
         private Panel sidePanel;
-        private Panel panel2;
+        private Panel registerLoginPanel;
         private Button Register;
         private Label label3;
         private Label label2;
@@ -514,7 +535,7 @@
         private TextBox email;
         private Label Logo;
         private Button login;
-        private Panel panel1;
+        private Panel createAcctPanel;
         private TextBox firstNameText;
         private Label label4;
         private Label label8;
@@ -525,14 +546,14 @@
         private TextBox phoneNumberText;
         private TextBox lastNameText;
         private Button submitAccount;
-        private Panel panel3;
+        private Panel transactionPanel;
         private Button submitTransaction;
         private TextBox transactionTypeText;
         private TextBox amounText;
         private Label label5;
         private Label label6;
         private Label amountLabel;
-        private Label label10;
+        private Label recAcctNumLabel;
         private TextBox recieverAcctNumText;
         private Label label11;
         private TextBox acctTypeText;
@@ -545,5 +566,7 @@
         private Panel panel9;
         private Panel panel6;
         private Panel panel7;
+        private TextBox transDescText;
+        private Label label9;
     }
 }

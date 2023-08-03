@@ -1,9 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Design;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 using WFBankApp.Repository.Data;
 
 namespace WFBankAppPresentation.ContextFactory
@@ -19,7 +17,7 @@ namespace WFBankAppPresentation.ContextFactory
 
             var builder = new DbContextOptionsBuilder<BankDbContext>()
                 .UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
-                b => b.MigrationsAssembly("WFBankApp.Repository"));
+                b => b.MigrationsAssembly("WFBankRepository"));
 
             return new BankDbContext(builder.Options);
         }

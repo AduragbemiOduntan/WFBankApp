@@ -11,7 +11,7 @@ namespace WFBankAppPresentation.Extensions
         public static void ConfigureUnitOfWork(this IServiceCollection services) =>
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-        public static void ConfigureServiceMananager(this IServiceCollection services) =>
+        public static void ConfigureServiceManager(this IServiceCollection services) =>
             services.AddScoped<IServiceManager, ServiceManager>();
     }
 }

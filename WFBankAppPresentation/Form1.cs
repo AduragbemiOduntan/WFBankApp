@@ -1,9 +1,16 @@
+using WFBankApp.Core.Abstraction;
+
 namespace WFBankAppPresentation
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        BindingSource _bindingAccounts;
+        IServiceManager _serviceManager;
+
+        public Form1(IServiceManager serviceManager)
         {
+            _bindingAccounts = new BindingSource();
+            _serviceManager = serviceManager;
             InitializeComponent();
         }
 
@@ -34,6 +41,11 @@ namespace WFBankAppPresentation
         private void panel5_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void startHereButton_Click(object sender, EventArgs e)
+        {
+            registerLoginPanel.Show();
         }
     }
 }

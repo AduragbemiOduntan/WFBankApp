@@ -8,5 +8,8 @@ namespace WFBankApp.Core.Abstraction
 {
     public interface IServiceManager
     {
+        IAuthenticationService AuthenticationService { get; }
+    /*    IAccountService AccountService { get; }*/
+        ITransactionService TransactionService { get; }
     }
 }

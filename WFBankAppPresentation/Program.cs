@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Configuration;
 using WFBankApp.Repository.Data;
+using WFBankAppPresentation.Extensions;
 
 namespace WFBankAppPresentation
 {
@@ -22,18 +22,21 @@ namespace WFBankAppPresentation
 
             ApplicationConfiguration.Initialize();
             var builder = new ConfigurationBuilder()
+                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
             Configuration = builder.Build();
+
             ServiceCollection services = new ServiceCollection();
             //Add Services Here
             services.AddTransient<Form1>();
-            services.AddDbContext<BankDbContext>(option => option
-                .UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<BankDbContext>(options => options.UseSqlServer("Data Source=ADURAO-IACADEMY\\SQLEXPRESS;database=WFBankDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"));
+            services.ConfigureUnitOfWork();
+            services.ConfigureServiceManager();
 
             using ServiceProvider serviceProvider = services.BuildServiceProvider();
             var form1 = serviceProvider.GetRequiredService<Form1>();
             Application.Run(form1);
-            
+
         }
     }
 }

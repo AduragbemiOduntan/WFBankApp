@@ -96,24 +96,41 @@ namespace WFBankApp.Share.Utilities
                 return result;
             }
 
-            // compare password hash
-            public static bool CompareHash(byte[] passwordSalt, byte[] passwordHash, string password)
+        // compare password hash
+        public static bool CompareHash(this string password, byte[] passwordSalt, byte[] passwordHash)
+        {
+            using (var hash = new System.Security.Cryptography.HMACSHA512(passwordSalt))
             {
-                using (var hash = new System.Security.Cryptography.HMACSHA512(passwordSalt))
+                var hashGenerated = hash.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                for (int i = 0; i < hashGenerated.Length; i++)
                 {
-                    var hashGenerated = hash.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-                    for (int i = 0; i < hashGenerated.Length; i++)
+                    if (hashGenerated[i] != passwordHash[i])
                     {
-                        if (hashGenerated[i] != passwordHash[i])
-                        {
-                            return false;
-                        }
+                        return false;
                     }
                 }
-                return true;
             }
-            // validate email
-            public static bool IsEmailValid(string inputEmail)
+            return true;
+        }
+
+
+        /*public static bool CompareHash(this byte[] passwordSalt, byte[] passwordHash, string password)
+        {
+            using (var hash = new System.Security.Cryptography.HMACSHA512(passwordSalt))
+            {
+                var hashGenerated = hash.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                for (int i = 0; i < hashGenerated.Length; i++)
+                {
+                    if (hashGenerated[i] != passwordHash[i])
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }*/
+        // validate email
+        public static bool IsEmailValid(string inputEmail)
             {
                 string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
                       @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
@@ -135,14 +152,14 @@ namespace WFBankApp.Share.Utilities
                 return acctNum;
             }
 
-            public static bool IsEmailAlreadyRegistered(this string email)
+  /*          public static bool IsEmailAlreadyRegistered(this string email)
             {
                 using (var dbContext = new BankDbContext("Data Source=ADURAO-IACADEMY\\SQLEXPRESS;database=WFBankDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"))
                 {
                     bool emailExists = dbContext.Users.Any(u => u.Email == email);
                     return true;
                 }
-            }
+            }*/
 
 
 

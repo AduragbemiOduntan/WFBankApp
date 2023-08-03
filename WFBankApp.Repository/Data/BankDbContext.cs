@@ -9,10 +9,7 @@ namespace WFBankApp.Repository.Data
 
         public BankDbContext(DbContextOptions<BankDbContext> options) : base(options) { }
 
-        public BankDbContext(string connectionString)
-        {
-            this.connectionString = connectionString;
-        }
+    
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
